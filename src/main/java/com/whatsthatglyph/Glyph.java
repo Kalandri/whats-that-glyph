@@ -10,7 +10,7 @@ public enum Glyph {
     BIND(6401, "Bind"),
     SPELLS(6402, "Spells"),
     HEAVY_RANGED(6403, "Heavy Ranged"),
-    TWO_HANDED(6404, "Two-Handed");
+    TWO_HANDED(6404, "Two-Handed Melee");
 
     @Getter
     private final int spriteId;

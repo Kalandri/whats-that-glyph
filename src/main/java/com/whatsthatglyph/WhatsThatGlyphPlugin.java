@@ -44,8 +44,7 @@ public class WhatsThatGlyphPlugin extends Plugin {
     @Getter(AccessLevel.PACKAGE)
     private boolean isInChasmOfFire;
 
-    @Getter
-    private Glyph currentGlyph;
+    private int currentSpriteId;
 
     private RegionInfoBox infoBox;
 
@@ -84,15 +83,15 @@ public class WhatsThatGlyphPlugin extends Plugin {
             return;
         }
 
-        if (archiveIds[0] == currentGlyph.getSpriteId()) {
+        if (archiveIds[0] == currentSpriteId) {
             return;
         }
 
-        currentGlyph = Glyph.fromSpriteId(archiveIds[0]);
-        spriteManager.getSpriteAsync(currentGlyph.getSpriteId(), 0, infoBox);
-        infoBox.setTooltip(currentGlyph.getAttackMethod());
-        infoBoxManager.updateInfoBoxImage(infoBox);
+        currentSpriteId = archiveIds[0];
 
+        spriteManager.getSpriteAsync(currentSpriteId, 0, infoBox);
+        infoBox.setTooltip(Glyph.fromSpriteId(currentSpriteId).getAttackMethod());
+        infoBoxManager.updateInfoBoxImage(infoBox);
         notifier.notify(config.glyphNotifications(), "The glyph has changed!");
     }
 
